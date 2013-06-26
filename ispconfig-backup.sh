@@ -55,6 +55,7 @@ then
 		SHOWIFVERBOSE "${command}"
 		DRYRUNOREXECUTE ${command}
 	done
+else
 fi
 
 if [ ${databases} = "y" ]
@@ -69,6 +70,7 @@ then
 		SHOWIFVERBOSE "${command}"
 		DRYRUNOREXECUTE ${command}
 	done
+else
 fi
 
 # Delete older backups
