@@ -43,6 +43,7 @@ else
 	backuplocation="/var/backup"
 fi
 
+ECHORED "DOMAINFILES"
 if [ ${domainfiles} ]
 then
 	if [ ${domainfiles} = "y" ]
@@ -60,6 +61,7 @@ then
 	fi
 fi
 
+ECHORED "databases"
 if [ ${databases} ]
 then
 	if [ ${databases} = "y" ]
