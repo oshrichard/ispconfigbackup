@@ -24,6 +24,21 @@ source ../loop-parameters/include.sh
 # Required call
 LOOPPARAMETERS $@
 
+# Check if retention is given, else default = 1
+if [ ${retention} ]
+then
+	useretention=${retention}
+else
+	useretention=1
+fi
+
+# Check if retention is given, else default = 1
+if [ ${directory} ]
+then
+	backuplocation=${directory}
+else
+	backuplocation="/var/backup"
+fi
 
 # Get list of domains from /var/www
 domainlist=`find /var/www/ -maxdepth 1 -type l`
