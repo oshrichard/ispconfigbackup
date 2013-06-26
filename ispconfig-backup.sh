@@ -43,34 +43,38 @@ else
 	backuplocation="/var/backup"
 fi
 
-if [ ${domainfiles} = "y" ]; then
-	# Get list of domains from /var/www
-	domainlist=`find /var/www/ -maxdepth 1 -type l`
+if [ ${domainfiles} ]
+then
+	if [ ${domainfiles} = "y" ]
+	then
+		# Get list of domains from /var/www
+		domainlist=`find /var/www/ -maxdepth 1 -type l`
 
-	# Loop domain list and create .tar.gz files for each
-	for domain in ${domainlist[*]}
-	do
-		command="tar cfz ${backuplocation}/${domain:9}-${timestamp}.tar.gz ${domain}/. > /dev/null 2>&1"
-		SHOWIFVERBOSE "${command}"
-		DRYRUNOREXECUTE ${command}
-	done
-else
-	# Do nothing
+		# Loop domain list and create .tar.gz files for each
+		for domain in ${domainlist[*]}
+		do
+			command="tar cfz ${backuplocation}/${domain:9}-${timestamp}.tar.gz ${domain}/. > /dev/null 2>&1"
+			SHOWIFVERBOSE "${command}"
+			DRYRUNOREXECUTE ${command}
+		done
+	fi
 fi
 
-if [ ${databases} = "y" ]; then
-	# Get list of databases from /var/lib/mysql
-	domainlist=`find /var/lib/mysql/ -maxdepth 1 -type d`
+if [ ${databases} ]
+then
+	if [ ${databases} = "y" ]
+	then
+		# Get list of databases from /var/lib/mysql
+		domainlist=`find /var/lib/mysql/ -maxdepth 1 -type d`
 
-	# Loop database list an create .sql.gz files for each
-	for database in ${databaselist[*]}
-	do
-		command="mysqldump -uroot -p${dbrootpasswd} ${database:15} | gzip > ${backuplocation}/${database:15}-${timestamp}.sql.gz > /dev/null 2>&1"
-		SHOWIFVERBOSE "${command}"
-		DRYRUNOREXECUTE ${command}
-	done
-else
-	# Do nothing
+		# Loop database list an create .sql.gz files for each
+		for database in ${databaselist[*]}
+		do
+			command="mysqldump -uroot -p${dbrootpasswd} ${database:15} | gzip > ${backuplocation}/${database:15}-${timestamp}.sql.gz > /dev/null 2>&1"
+			SHOWIFVERBOSE "${command}"
+			DRYRUNOREXECUTE ${command}
+		done
+	fi
 fi
 
 # Delete older backups
