@@ -26,7 +26,7 @@ LOOPPARAMETERS $@
 
 
 # Get list of domains from /var/www
-domainlist=`find /var/www/ -type l -maxdepth 1`
+domainlist=`find /var/www/ -maxdepth 1 -type l`
 
 # Loop domain list and create .tar.gz files for each
 for domain in ${domainslist[*]}
