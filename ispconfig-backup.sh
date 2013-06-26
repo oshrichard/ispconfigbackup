@@ -46,7 +46,7 @@ domainlist=`find /var/www/ -maxdepth 1 -type l`
 # Loop domain list and create .tar.gz files for each
 for domain in ${domainlist[*]}
 do
-	command="tar cfz ${backuplocation}/${domain:9}-${timestamp}.tar.gz ${domain}/. > /dev/null"
+	command="tar cfz ${backuplocation}/${domain:9}-${timestamp}.tar.gz ${domain}/. > /dev/null 2>&1"
 	SHOWIFVERBOSE "${command}"
 	DRYRUNOREXECUTE ${command}
 done
