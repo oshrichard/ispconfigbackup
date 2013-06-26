@@ -5,7 +5,7 @@
 aREQUIRED=( --run )
 
 # Optional Variables
-aOPTIONAL=( --retention --directory --verbose --dryrun )
+aOPTIONAL=( --domainfiles --databases --dbrootpasswd --retention --directory --verbose --dryrun )
 
 # This will show when parameter --help is given
 EXPLANATION="
@@ -43,38 +43,32 @@ else
 	backuplocation="/var/backup"
 fi
 
-if [ ${domainfiles} ]
+if [ ${domainfiles} = "y" ]
 then
-	if [ ${domainfiles} = "y" ]
-	then
-		# Get list of domains from /var/www
-		domainlist=`find /var/www/ -maxdepth 1 -type l`
+	# Get list of domains from /var/www
+	domainlist=`find /var/www/ -maxdepth 1 -type l`
 
-		# Loop domain list and create .tar.gz files for each
-		for domain in ${domainlist[*]}
-		do
-			command="tar cfz ${backuplocation}/${domain:9}-${timestamp}.tar.gz ${domain}/. > /dev/null 2>&1"
-			SHOWIFVERBOSE "${command}"
-			DRYRUNOREXECUTE ${command}
-		done
-	fi
+	# Loop domain list and create .tar.gz files for each
+	for domain in ${domainlist[*]}
+	do
+		command="tar cfz ${backuplocation}/${domain:9}-${timestamp}.tar.gz ${domain}/. > /dev/null 2>&1"
+		SHOWIFVERBOSE "${command}"
+		DRYRUNOREXECUTE ${command}
+	done
 fi
 
-if [ ${databases} ]
+if [ ${databases} = "y" ]
 then
-	if [ ${databases} = "y" ]
-	then
-		# Get list of databases from /var/lib/mysql
-		domainlist=`find /var/lib/mysql/ -maxdepth 1 -type d`
+	# Get list of databases from /var/lib/mysql
+	domainlist=`find /var/lib/mysql/ -maxdepth 1 -type d`
 
-		# Loop database list an create .sql.gz files for each
-		for database in ${databaselist[*]}
-		do
-			command="mysqldump -uroot -p${dbrootpasswd} ${database:15} | gzip > ${backuplocation}/${database:15}-${timestamp}.sql.gz > /dev/null 2>&1"
-			SHOWIFVERBOSE "${command}"
-			DRYRUNOREXECUTE ${command}
-		done
-	fi
+	# Loop database list an create .sql.gz files for each
+	for database in ${databaselist[*]}
+	do
+		command="mysqldump -uroot -p${dbrootpasswd} ${database:15} | gzip > ${backuplocation}/${database:15}-${timestamp}.sql.gz > /dev/null 2>&1"
+		SHOWIFVERBOSE "${command}"
+		DRYRUNOREXECUTE ${command}
+	done
 fi
 
 # Delete older backups
