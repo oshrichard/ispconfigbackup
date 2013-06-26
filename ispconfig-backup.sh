@@ -45,9 +45,9 @@ fi
 
 if [ ${domainfiles} ]
 then
-	ECHORED "domainfiles"
 	if [ ${domainfiles} = "y" ]
 	then
+		ECHORED "domainfiles"
 		# Get list of domains from /var/www
 		domainlist=`find /var/www/ -maxdepth 1 -type l`
 
@@ -63,9 +63,9 @@ fi
 
 if [ ${databases} ]
 then
-	ECHORED "databases"
 	if [ ${databases} = "y" ]
 	then
+		ECHORED "databases"
 		# Get list of databases from /var/lib/mysql
 		domainlist=`find /var/lib/mysql/ -maxdepth 1 -type d`
 
