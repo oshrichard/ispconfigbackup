@@ -43,8 +43,7 @@ else
 	backuplocation="/var/backup"
 fi
 
-if [ ${domainfiles} = "y" ]
-then
+if [ ${domainfiles} = "y" ]; then
 	# Get list of domains from /var/www
 	domainlist=`find /var/www/ -maxdepth 1 -type l`
 
@@ -56,10 +55,10 @@ then
 		DRYRUNOREXECUTE ${command}
 	done
 else
+	# Do nothing
 fi
 
-if [ ${databases} = "y" ]
-then
+if [ ${databases} = "y" ]; then
 	# Get list of databases from /var/lib/mysql
 	domainlist=`find /var/lib/mysql/ -maxdepth 1 -type d`
 
@@ -71,6 +70,7 @@ then
 		DRYRUNOREXECUTE ${command}
 	done
 else
+	# Do nothing
 fi
 
 # Delete older backups
