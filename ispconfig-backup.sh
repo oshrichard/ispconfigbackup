@@ -5,7 +5,7 @@
 aREQUIRED=( --run )
 
 # Optional Variables
-aOPTIONAL=( --verbose --dryrun)
+aOPTIONAL=( --retention --directory --verbose --dryrun)
 
 # This will show when parameter --help is given
 EXPLANATION="
