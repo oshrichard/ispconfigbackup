@@ -14,6 +14,7 @@ EXPLANATION="
 *** OPTIONAL ***              
 --domainfiles	- y/n		-	Backup files for all domains
 --databases		- y/n		-	Backup all databases
+--dbrootpasswd	- string	-	MySQL root password
 --retention		- integer	-	how many days retention of backups to keep, default = 1
 --directory		- path		-	If omitted /var/backup (not backups) will be used
 --verbose		- y/n		-	Show commands while executing
