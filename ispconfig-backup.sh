@@ -10,7 +10,7 @@ aOPTIONAL=( --retention --directory --verbose --dryrun)
 # This will show when parameter --help is given
 EXPLANATION="
 *** REQUIRED ***
---run			- y/n	- 	a failsafe
+--run			- y/n		- 	a failsafe
 *** OPTIONAL ***              
 --retention		- integer	-	how many days retention of backups to keep, default = 1
 --directory		- path		-	If omitted /var/backup (not backups) will be used
