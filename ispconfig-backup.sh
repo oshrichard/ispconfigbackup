@@ -67,7 +67,7 @@ then
 	then
 		ECHORED "databases"
 		# Get list of databases from /var/lib/mysql
-		domainlist=`find /var/lib/mysql/ -maxdepth 1 -type d`
+		databaselist=`find /var/lib/mysql/ -maxdepth 1 -type d`
 
 		# Loop database list an create .sql.gz files for each
 		for database in ${databaselist[*]}
