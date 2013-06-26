@@ -65,7 +65,7 @@ then
 	# Loop database list an create .sql.gz files for each
 	for database in ${databaselist[*]}
 	do
-		command="mysqldump -uroot -p${dbrootpasswd} ${domain:15} | gzip > ${backuplocation}/${database}-${timestamp}.sql.gz > /dev/null 2>&1"
+		command="mysqldump -uroot -p${dbrootpasswd} ${database:15} | gzip > ${backuplocation}/${database:15}-${timestamp}.sql.gz > /dev/null 2>&1"
 		SHOWIFVERBOSE "${command}"
 		DRYRUNOREXECUTE ${command}
 	done
