@@ -80,3 +80,6 @@ then
 fi
 
 # Delete older backups
+command="find ${backuplocation}/* -mtime +${useretention} -exec rm {} \;"
+SHOWIFVERBOSE "${command}"
+DRYRUNOREXECUTE ${command}
