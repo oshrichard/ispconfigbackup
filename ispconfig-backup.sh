@@ -31,10 +31,9 @@ domainlist=`find /var/www/ -maxdepth 1 -type l`
 # Loop domain list and create .tar.gz files for each
 for domain in ${domainlist[*]}
 do
-	echo ${domain:9}
-	#command="tar cvfz ${backuplocation}/${domain:9}.tar.gz ${domain}"
-	#SHOWIFVERBOSE "${command}"
-	#DRYRUNOREXECUTE ${command}
+	command="tar cvfz ${backuplocation}/${domain:9}.tar.gz ${domain}"
+	SHOWIFVERBOSE "${command}"
+	DRYRUNOREXECUTE ${command}
 done
 
 # Get list of databases from /var/lib/mysql
