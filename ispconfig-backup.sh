@@ -43,9 +43,9 @@ else
 	backuplocation="/var/backup"
 fi
 
-ECHORED "DOMAINFILES"
 if [ ${domainfiles} ]
 then
+	ECHORED "domainfiles"
 	if [ ${domainfiles} = "y" ]
 	then
 		# Get list of domains from /var/www
@@ -61,9 +61,9 @@ then
 	fi
 fi
 
-ECHORED "databases"
 if [ ${databases} ]
 then
+	ECHORED "databases"
 	if [ ${databases} = "y" ]
 	then
 		# Get list of databases from /var/lib/mysql
